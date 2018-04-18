@@ -1,0 +1,77 @@
+当我们在多个地方使用到某个函数或者类，
+
+我们该如何来导入来实现调用呢？
+
+- 1 在render渲染时导入
+
+
+- 2 在模板中导入
+
+
+- 3 设置配置项ui_methods=' ',ui_modules=' '
+
+```
+其中1,2都需要多次的导入，而3通过tornado给我提供了配置一个配置项，
+
+来实现配置一次就可以在多个地方调用
+
+```
+
+## 第一步：创建ui_methods和ui_modules两个py文件
+
+```
+这里的文件名是随意的只要在import时合法即可，这里可以新建一个文件夹，如util，来放置 ui_methods.py 和 ui_modules.py
+```
+
+ui_methods.py
+
+```python
+#-*-coding:utf-8-*-
+"""
+this is ui_methods
+"""
+
+def methods1(self):		#注意这里要加上self
+    return 'ui_methods1'
+```
+
+ui_modules.py
+
+```python
+#-*-coding:utf-8-*-
+"""
+this is ui_modules
+"""
+
+from tornado.web import UIModule #要导入tornado给我们提供的UIModule模块
+
+
+class UiModule(UIModule):	#需要继承UIModule类
+
+    def render(self, *args, **kwargs):
+        return '我是 ui_modules'
+```
+
+## 第二步:在项目中导入
+
+```python
+import utils.ui_methods
+import utils.ui_modules
+```
+
+## 第三步:配置Application参数
+
+```python
+ui_methods=utils.ui_methods,
+ui_modules=utils.ui_modules,
+```
+
+## 第四步:在模板中调用
+
+```python
+<br>
+{% module UiModule() %}	# 类的调用用{% 需要加个module
+<br>
+{{ methods1() }}	# 函数就直接调用
+```
+
