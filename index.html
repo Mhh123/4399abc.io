@@ -30,14 +30,14 @@ description: "菜鸟成长记"
 <ul class="pager">
     
     {% if paginator.previous_page %}
-    //<li class="previous">
+    #<li class="previous">
     <li>
         <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
     </li>
     {% endif %}
     <li> 总共有{{ paginator.total_pages }} 页</li>
     {% if paginator.next_page %}
-    //<li class="next">
+    #<li class="next">
     <li>
         <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
     </li>
