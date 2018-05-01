@@ -3,6 +3,8 @@ layout: page
 description: "菜鸟成长记"
 ---
 {{ typeof(paginator.posts) }}
+{{ type(paginator.posts)}}
+{{length(paginator.posts)}}
 
 {% for post in paginator.posts %}
 <div class="post-preview">
