@@ -1,4 +1,10 @@
 ```python
+
+#注意看
+#ForeignKey('department3.id')外键所在的表(student3)为多
+#relationship('student3',backref='department3')所在的表(department3)backref是反向查询的意思
+#department3-->student3为一对多
+
 from connect2 import engine,Base
 from sqlalchemy import Column,ForeignKey,Integer,String,Boolean,Text,Date,DateTime
 from sqlalchemy.orm import sessionmaker,relationship
