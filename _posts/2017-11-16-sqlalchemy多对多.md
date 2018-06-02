@@ -1,4 +1,8 @@
 ```python
+#注意
+#多对多的实现,需要第三张关系表
+#通过两个一对多间接地实现多对多
+
 from sqlalchemy import create_engine
 Username='mhh123'
 Password='mhh123'
