@@ -1,4 +1,12 @@
 ```python
+
+
+#注意看
+#ForeignKey('member.id')外键所在的表(Me_detail)为多
+#relationship('Me_detail',uselist=False)所在的表(Member)如果加上uselist=False则为一
+#Member-->Me_detail为一对一
+#为什么是一对一呢？不应该是一对多吗？
+#因为限制了关联列,所以本来是多选的,现在变成了单选，就变成了一对一
 from sqlalchemy import create_engine
 Username='mhh123'
 Password='mhh123'
